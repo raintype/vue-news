@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="(job, index) in jobs :key="title">
+        <div v-for="job in jobs" :key="job.title">
             {{ job.title }}
         </div>
     </div>
@@ -27,6 +27,5 @@ export default {
 </script>
 
 <style>
-
 
 </style>
