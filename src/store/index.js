@@ -9,12 +9,16 @@ export const store = createStore({
         jobs: [],
         ask: [],
         user: {},
+        item: {},
       }
     },
     getters: {
         fetchedAsk(state) {
             return state.ask;
-        }
+        },
+        fetchedItem(state) {
+          return state.item;
+        },
     },
     mutations,
     actions,
