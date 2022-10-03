@@ -1,5 +1,5 @@
 import ListView from './ListView.vue'
-import {h } from 'vue'
+import { h } from 'vue'
 
 export default function createListView(name) {
     return {
@@ -19,7 +19,6 @@ export default function createListView(name) {
                 });
             
         },
-
         render() {
             return h(ListView);
         }
