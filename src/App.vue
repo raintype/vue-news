@@ -5,21 +5,44 @@
       <transition name="page">
         <component :is="Component" />
       </transition>
+      <spinner :loading="loadingStatus"></spinner>
     </router-view>
 
-
-    
   </div>
 </template>
 
 <script>
 /* eslint-disable */
 import ToolBar from './components/Toolbar.vue';
+import Spinner from './components/Spinner.vue';
+// import bus from './utils/bus.js';
 
 export default {
   name: 'App',
   components: {
-    ToolBar
+    ToolBar, Spinner
+  },
+  data() {
+    return {
+      loadingStatus: false,
+    }
+  },
+  methods: {
+    startSpinner() {
+      this.loadingStatus = true;
+    }, 
+    endSpinner() {
+      this.loadingStatus = false;
+    }
+  },
+  created() {
+    // bus.$on('start:spinner', this.startSpinner);
+    this.emitter.on("start:spinner", this.startSpinner);
+    this.emitter.on("end:spinner", this.endSpinner);
+  },
+  beforeDestroy() {
+    this.emitter.off("start:spinner", this.startSpinner);
+    this.emitter.off("end:spinner", this.endSpinner);
   }
 }
 </script>
